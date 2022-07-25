@@ -1,0 +1,27 @@
+<div class="main-auth-container">
+  <div class="auth-container">
+    <div class="auth-form-container">
+      <h1 class="form-heading">
+        WELCOME AGAIN, LOGIN HERE
+      </h1>
+      <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" class="auth-form">
+        <div class="form-input-container">
+          <input class="form-input" type="email" placeholder="Email" name="email" ngModel required email>
+          <input class="form-input" type="password" placeholder="Password" name="password" ngModel required
+            minlength="6">
+        </div>
+        <button type="submit" class="auth-submit-button">
+          LOGIN
+        </button>
+      </form>
+      <p class="signup-link-para">
+        Are You New? <a routerLink="/auth/sign-up" class="signup-link">SIGN UP</a> now!!
+      </p>
+    </div>
+    <div class="image-container">
+      <img class="auth-image"
+        src="https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80"
+        alt="">
+    </div>
+  </div>
+</div>
