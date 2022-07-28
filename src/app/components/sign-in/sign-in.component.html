@@ -1,3 +1,4 @@
+<app-error *ngIf="error"></app-error>
 <div class="main-auth-container">
   <div class="auth-container">
     <div class="auth-form-container">
@@ -6,12 +7,13 @@
       </h1>
       <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" class="auth-form">
         <div class="form-input-container">
-          <input class="form-input" type="email" placeholder="Email" name="email" ngModel required email>
+          <input class="form-input" type="email" placeholder="Email" name="credential" ngModel required>
           <input class="form-input" type="password" placeholder="Password" name="password" ngModel required
             minlength="6">
         </div>
-        <button type="submit" class="auth-submit-button">
-          LOGIN
+        <button type="submit" [ngClass]="isLogging|| !authForm.valid?'auth-submit-button-loading':'auth-submit-button'"
+          [disabled]="!authForm.valid || isLogging">
+          {{isLogging?"Logging...":"Login"}}
         </button>
       </form>
       <p class="signup-link-para">

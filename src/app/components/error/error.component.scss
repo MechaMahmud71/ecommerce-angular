@@ -1,0 +1,39 @@
+.error {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 10px;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+}
+
+.error-message-container {
+  padding: 15px;
+  background-color: #fee2e2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #f87171;
+  border-radius: 5px;
+  max-width: 1000px;
+}
+
+.message {
+  color: #ef4444;
+  font-weight: 500;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+  cursor: pointer;
+}
+
+.close-btn i {
+  color: #ef4444;
+}

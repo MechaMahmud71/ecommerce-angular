@@ -79,6 +79,16 @@
   cursor: pointer;
 }
 
+.auth-submit-button-loading {
+  margin-top: 10px;
+  padding: 10px 30px;
+  border: none;
+  background-color: rgb(206, 86, 106);
+  color: white;
+  border-radius: 3px;
+  cursor: not-allowed;
+}
+
 .signup-link-para {
   font-family: 'Lato', sans-serif;
   font-size: 12px;

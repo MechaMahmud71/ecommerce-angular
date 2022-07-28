@@ -1,3 +1,4 @@
+<app-error *ngIf="error"></app-error>
 <div class="main-auth-container">
   <div class="auth-container">
     <div class="image-container">
@@ -9,16 +10,18 @@
       <h1 class="form-heading">
         NEW TO OUR SHOP, SIGN UP
       </h1>
-      <form action="" class="auth-form">
+      <form action="" class="auth-form" #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
         <div class="form-input-container">
-          <input class="form-input" type="text" name="name" placeholder="Username">
-          <input class="form-input" type="email" name="email" placeholder="Email">
-          <input class="form-input" type="text" name="mobileNo" placeholder="Contact Number">
-          <input class="form-input" type="password" name="password" placeholder="Password">
+          <input class="form-input" type="text" name="userName" placeholder="Username" ngModel required>
+          <input class="form-input" type="email" name="email" placeholder="Email" ngModel required>
+          <input class="form-input" type="text" name="phoneNo" placeholder="Contact Number" ngModel required>
+          <input class="form-input" type="password" name="password" placeholder="Password" ngModel required
+            minlength="6">
 
         </div>
-        <button type="submit" class="auth-submit-button">
-          SIGN UP
+        <button type="submit" class="auth-submit-button"
+          [ngClass]="isLogging|| !authForm.valid?'auth-submit-button-loading':'auth-submit-button'">
+          {{isLogging?"Signing up...":"Signup"}}
         </button>
       </form>
       <p class="signup-link-para">
