@@ -3,8 +3,9 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule, PreloadAllModules } from "@angular/router";
 
 const appRoutes: Routes = [
+  { path: "", loadChildren: () => import("../modules/home.module").then(m => m.HomeModule) },
   {
-    path:"auth",loadChildren:()=>import("../../modules/auth/auth.module").then(m=>m.AuthModule)
+    path: "auth", loadChildren: () => import("../modules/auth.module").then(m => m.AuthModule)
   }
 ]
 
@@ -12,8 +13,8 @@ const appRoutes: Routes = [
   declarations: [],
   imports: [
     CommonModule,
-    RouterModule.forRoot(appRoutes,{preloadingStrategy:PreloadAllModules})
+    RouterModule.forRoot(appRoutes, { preloadingStrategy: PreloadAllModules })
   ],
-  exports:[RouterModule]
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

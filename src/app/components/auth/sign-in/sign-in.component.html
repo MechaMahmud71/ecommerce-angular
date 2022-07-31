@@ -7,12 +7,18 @@
       </h1>
       <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" class="auth-form">
         <div class="form-input-container">
-          <input class="form-input" type="email" placeholder="Email" name="credential" ngModel required>
+          <input class="form-input" type="text" placeholder="Email or Phone No" name="credential" #credential="ngModel"
+            ngModel required>
+          <span class="form-validation-message" *ngIf="!credential.valid && credential.touched">
+            Credential is Required
+          </span>
+          <br>
           <input class="form-input" type="password" placeholder="Password" name="password" ngModel required
-            minlength="6">
+            minlength="6" #password="ngModel">
+          <span class="form-validation-message" *ngIf="!password.valid && password.touched">Password is Required</span>
         </div>
         <button type="submit" [ngClass]="isLogging|| !authForm.valid?'auth-submit-button-loading':'auth-submit-button'"
-          [disabled]="!authForm.valid || isLogging">
+          [disabled]="isLogging || !authForm.valid">
           {{isLogging?"Logging...":"Login"}}
         </button>
       </form>

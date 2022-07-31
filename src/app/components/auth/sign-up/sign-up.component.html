@@ -1,0 +1,48 @@
+<app-error *ngIf="error"></app-error>
+<div class="main-auth-container">
+  <div class="auth-container">
+    <div class="image-container">
+      <img class="auth-image"
+        src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+        alt="">
+    </div>
+    <div class="auth-form-container">
+      <h1 class="form-heading">
+        NEW TO OUR SHOP, SIGN UP
+      </h1>
+      <form class="auth-form" #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+        <div class="form-input-container">
+          <input class="form-input" type="text" name="userName" placeholder="Username" ngModel required
+            #userName="ngModel">
+          <span class="form-validation-message" *ngIf="!userName.valid && userName.touched">
+            User Name is Required
+          </span>
+          <input class="form-input" type="email" name="email" placeholder="Email" ngModel required email
+            #email="ngModel">
+          <span class="form-validation-message" *ngIf="!email.valid && email.touched">
+            Email is Required
+          </span>
+          <input class="form-input" type="text" name="phoneNo" placeholder="Contact Number" ngModel required
+            #phoneNo="ngModel">
+          <span class="form-validation-message" *ngIf="!phoneNo.valid && phoneNo.touched">
+            Contact No is Required
+          </span>
+          <input class="form-input" type="password" name="password" placeholder="Password" ngModel required
+            #password="ngModel" minlength="6">
+          <span class="form-validation-message" *ngIf="!password.valid && password.touched">
+            Password is Required
+          </span>
+        </div>
+        <button type="submit" class="auth-submit-button"
+          [ngClass]="isLogging || !authForm.valid?'auth-submit-button-loading':'auth-submit-button'"
+          [disabled]="isLogging || !authForm.valid">
+          {{isLogging?"Signing up...":"Signup"}}
+        </button>
+      </form>
+      <p class="signup-link-para">
+        Already Have An Account? <a routerLink="/auth/sign-in" class="signup-link">LOG IN</a> now!!
+      </p>
+    </div>
+
+  </div>
+</div>

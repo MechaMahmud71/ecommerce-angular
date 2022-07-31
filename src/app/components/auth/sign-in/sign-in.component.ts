@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Auth } from 'src/app/core/Interfaces/models/auth.interface';
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -16,7 +17,7 @@ export class SignInComponent implements OnInit, OnDestroy {
   public error: string = "";
 
 
-  constructor(private authService: AuthService, private errorService: ErrorService) { }
+  constructor(private authService: AuthService, private errorService: ErrorService, private router: Router) { }
 
   ngOnInit(): void {
     this.subscription = this.errorService.errorMessage.subscribe(message => {
@@ -34,6 +35,7 @@ export class SignInComponent implements OnInit, OnDestroy {
       next: (res: Auth) => {
         this.isLogging = false;
         this.error = "";
+        this.router.navigate(["/"])
       },
       error: (error) => {
         this.isLogging = false;

@@ -14,15 +14,21 @@ export class ErrorComponent implements OnInit, OnDestroy {
 
   public message: string = "";
 
+  public timeOut: any;
+
   constructor(private errorService: ErrorService) { }
 
   ngOnInit(): void {
     this.subscription = this.errorService.errorMessage.subscribe(message => {
       this.message = message;
+      this.timeOut = setTimeout(() => {
+        this.onClose();
+      }, 5000)
     })
   }
 
   onClose(): void {
+    clearTimeout(this.timeOut)
     this.errorService.closeMessage();
   }
 

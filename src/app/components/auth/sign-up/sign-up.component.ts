@@ -31,6 +31,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(form: NgForm) {
+    console.log(form)
     this.isLogging = true;
     this.authService.signUp(form.value).subscribe({
       next: (res: Auth) => {
